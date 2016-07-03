@@ -673,10 +673,10 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="600" height="300"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1M0-c2-zCF">
                         <rect key="frame" x="310" y="10" width="280" height="258"/>
@@ -684,7 +684,7 @@
                             <rect key="frame" x="1" y="1" width="278" height="256"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="CLc-w9-fKc">
+                                <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="CLc-w9-fKc">
                                     <rect key="frame" x="0.0" y="0.0" width="278" height="256"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -701,7 +701,7 @@
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hc0-4c-hoX">
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="hc0-4c-hoX">
                             <rect key="frame" x="263" y="1" width="16" height="256"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -759,11 +759,21 @@
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ASR-se-TjA">
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="ASR-se-TjA">
                             <rect key="frame" x="263" y="1" width="16" height="256"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t3f-c7-Gen">
+                        <rect key="frame" x="184" y="264" width="112" height="32"/>
+                        <buttonCell key="cell" type="push" title="mixed Copy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="efD-mK-Ptx">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="copyInAndOutputText:" target="Voe-Tx-rLC" id="TFG-jA-7WP"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="HQf-hw-GUO" firstAttribute="height" secondItem="Kc5-tl-wUd" secondAttribute="height" id="2ss-W5-iOf"/>
@@ -777,10 +787,12 @@
                     <constraint firstItem="HQf-hw-GUO" firstAttribute="width" secondItem="Kc5-tl-wUd" secondAttribute="width" id="YrY-hv-Ve8"/>
                     <constraint firstItem="6Xs-Um-Z03" firstAttribute="width" secondItem="Kc5-tl-wUd" secondAttribute="width" id="bth-zG-Mop"/>
                     <constraint firstItem="1M0-c2-zCF" firstAttribute="centerX" secondItem="HQf-hw-GUO" secondAttribute="centerX" id="ehr-bb-G9G"/>
+                    <constraint firstItem="t3f-c7-Gen" firstAttribute="trailing" secondItem="6Xs-Um-Z03" secondAttribute="trailing" id="jH2-wL-utt"/>
                     <constraint firstItem="HQf-hw-GUO" firstAttribute="centerY" secondItem="Kc5-tl-wUd" secondAttribute="centerY" id="kNm-H7-28j"/>
                     <constraint firstItem="1M0-c2-zCF" firstAttribute="width" secondItem="6Xs-Um-Z03" secondAttribute="width" id="kVe-cB-ecv"/>
                     <constraint firstItem="6Xs-Um-Z03" firstAttribute="centerX" secondItem="Kc5-tl-wUd" secondAttribute="centerX" id="nXM-dX-i7v"/>
                     <constraint firstAttribute="trailing" secondItem="HQf-hw-GUO" secondAttribute="trailing" constant="10" id="qKI-Mr-vjt"/>
+                    <constraint firstItem="0bJ-Ad-sec" firstAttribute="centerY" secondItem="t3f-c7-Gen" secondAttribute="centerY" id="vt0-dJ-Otu"/>
                     <constraint firstItem="Kc5-tl-wUd" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="10" id="x9N-aQ-4HJ"/>
                     <constraint firstAttribute="bottom" secondItem="6Xs-Um-Z03" secondAttribute="bottom" constant="10" id="yYr-Xn-x7G"/>
                 </constraints>

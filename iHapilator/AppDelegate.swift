@@ -24,6 +24,15 @@ class AppDelegate: NSObject, NSApplicationDelegate,NSTextViewDelegate {
         
         
         self.inputTextView.delegate = self
+        
+        self.inputTextView.superview?.postsBoundsChangedNotifications = true
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.boundDidChange(_:)), name: NSViewBoundsDidChangeNotification, object: self.inputTextView)
+        
+    }
+    
+    func boundDidChange(notification:NSNotification){
+        print("did scroll")
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -39,6 +48,9 @@ class AppDelegate: NSObject, NSApplicationDelegate,NSTextViewDelegate {
         let pasteboard = NSPasteboard.generalPasteboard()
         pasteboard.declareTypes([NSStringPboardType], owner: nil)
         pasteboard.setString(self.outputTextView.string!, forType: NSStringPboardType)
+        
+    }
+    @IBAction func copyInAndOutputText(sender: NSButton) {
         
     }
     //MARK: Textfield Delegate
