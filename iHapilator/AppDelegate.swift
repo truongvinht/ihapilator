@@ -21,19 +21,14 @@ class AppDelegate: NSObject, NSApplicationDelegate,NSTextViewDelegate {
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
-        
-        
         self.inputTextView.delegate = self
-        
         self.inputTextView.superview?.postsBoundsChangedNotifications = true
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.boundDidChange(_:)), name: NSViewBoundsDidChangeNotification, object: self.inputTextView)
-        
+//        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.textDidChange), name: NSNotification.Name.NSViewBoundsDidChange, object: self.inputTextView)
     }
     
-    func boundDidChange(notification:NSNotification){
-        print("did scroll")
-    }
+//    func boundDidChange(notification:NSNotification){
+//        print("did scroll")
+//    }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
@@ -45,22 +40,29 @@ class AppDelegate: NSObject, NSApplicationDelegate,NSTextViewDelegate {
      */
     @IBAction func copyOutputText(sender: NSButton) {
         
-        let pasteboard = NSPasteboard.generalPasteboard()
-        pasteboard.declareTypes([NSStringPboardType], owner: nil)
-        pasteboard.setString(self.outputTextView.string!, forType: NSStringPboardType)
-        
-    }
-    @IBAction func copyInAndOutputText(sender: NSButton) {
-        
+        let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        pasteboard.setString(self.outputTextView.string, forType: .string)
     }
     //MARK: Textfield Delegate
-    func textDidChange(notification: NSNotification) {
-        dispatch_async(dispatch_get_main_queue()) { 
+    func textDidChange(_ notification: Notification) {
+
+        DispatchQueue.main.async(execute: { () -> Void in
             
             // text did change -> update the output
-            let v:String = self.inputTextView.string!.convertHanziToPinyin()
-            self.outputTextView.string = v
-        }
+            let content:String = self.inputTextView.string.convertHanziToPinyin()
+            self.outputTextView.string = content
+        })
     }
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSPasteboardPasteboardTypeArray(_ input: [String]) -> [NSPasteboard.PasteboardType] {
+	return input.map { key in NSPasteboard.PasteboardType(key) }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSPasteboardPasteboardType(_ input: String) -> NSPasteboard.PasteboardType {
+	return NSPasteboard.PasteboardType(rawValue: input)
 }

@@ -17,7 +17,25 @@ extension String{
         let mutableString = NSMutableString(string: self) as CFMutableString
         var range = CFRangeMake(0, CFStringGetLength(mutableString))
         //kCFStringTransformMandarinLatin
-        CFStringTransform(mutableString, &range, kCFStringTransformToLatin, Bool(0))
+        CFStringTransform(mutableString, &range, kCFStringTransformToLatin, Bool(truncating: 0))
+        
+        return mutableString as String
+    }
+    
+    func convertHiraganaToRomanji() -> String {
+        let mutableString = NSMutableString(string:self) as CFMutableString
+        
+        var range = CFRange(location: 0, length: CFStringGetLength(mutableString))
+        CFStringTransform(mutableString,&range,kCFStringTransformLatinHiragana,Bool(truncating: 1))
+        
+        return mutableString as String
+    }
+    
+    func convertKatanaToRomanji() -> String {
+        let mutableString = NSMutableString(string:self) as CFMutableString
+        
+        var range = CFRange(location: 0, length: CFStringGetLength(mutableString))
+        CFStringTransform(mutableString,&range,kCFStringTransformLatinKatakana,Bool(truncating: 1))
         
         return mutableString as String
     }
