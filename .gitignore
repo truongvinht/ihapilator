@@ -1,0 +1,4 @@
+#ignore following files
+.DS_Store
+iHapilator.xcodeproj/project.xcworkspace/xcshareddata
+iHapilator.xcodeproj/project.xcworkspace/xcuserdata
